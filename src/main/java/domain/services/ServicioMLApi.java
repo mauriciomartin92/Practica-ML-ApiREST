@@ -1,7 +1,6 @@
 package domain.services;
 
 import domain.model.ListadoDePaises;
-import domain.model.ListadoDeProvincias;
 import domain.model.Pais;
 import domain.model.Provincia;
 import retrofit2.Call;
@@ -41,7 +40,7 @@ public class ServicioMLApi {
         return listadoDePaises;
     }
 
-    public Pais unPais(String id) throws IOException {
+    public Pais pais(String id) throws IOException {
         MercadoLibreService mercadoLibreService = this.retrofit.create(MercadoLibreService.class);
         Call<Pais> requestDetalleDePais = mercadoLibreService.pais(id);
 
@@ -49,13 +48,13 @@ public class ServicioMLApi {
         return responseDetalleDePais.body();
     }
 
-    /*public ListadoDeMunicipios listadoDeMunicipiosDeProvincia(Provincia provincia) throws IOException {
+    public Provincia provincia(String id) throws IOException {
         MercadoLibreService mercadoLibreService = this.retrofit.create(MercadoLibreService.class);
-        Call<ListadoDeMunicipios> requestListadoDeMunicipios = mercadoLibreService.municipios(provincia.id, "id, name", maximaCantidadRegistrosDefault);
-        Response<ListadoDeMunicipios> responseListadoDeMunicipios = requestListadoDeMunicipios.execute();
-        ListadoDeMunicipios listadoDeMunicipios = responseListadoDeMunicipios.body();
-        return listadoDeMunicipios;
+        Call<Provincia> requestDetalleDeProvincia = mercadoLibreService.provincia(id);
+
+        Response<Provincia> responseDetalleDeProvincia = requestDetalleDeProvincia.execute();
+        return responseDetalleDeProvincia.body();
     }
 
-     */
+
 }
