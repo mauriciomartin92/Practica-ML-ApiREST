@@ -1,6 +1,8 @@
 package domain.services;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import domain.model.ListadoDePaises;
+import domain.model.Moneda;
 import domain.model.Pais;
 import domain.model.Provincia;
 import retrofit2.Call;
@@ -54,6 +56,14 @@ public class ServicioMLApi {
 
         Response<Provincia> responseDetalleDeProvincia = requestDetalleDeProvincia.execute();
         return responseDetalleDeProvincia.body();
+    }
+
+    public Moneda moneda(String id) throws IOException{
+        MercadoLibreService mercadoLibreService = this.retrofit.create(MercadoLibreService.class);
+        Call<Moneda> requestMoneda = mercadoLibreService.moneda(id);
+
+        Response<Moneda> responseMoneda = requestMoneda.execute();
+        return responseMoneda.body();
     }
 
 

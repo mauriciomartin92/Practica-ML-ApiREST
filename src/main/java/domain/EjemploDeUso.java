@@ -13,7 +13,9 @@ public class EjemploDeUso {
         System.out.println("Listado de paises:");
         ListadoDePaises listadoDePaises = servicioMLApi.listadoDePaises();
         for(Pais unPais:listadoDePaises.paises) {
-            System.out.println(unPais.id + " - " + unPais.name + " - " + unPais.currency_id);
+            System.out.print(unPais.id + " - " + unPais.name + " - " + unPais.currency_id);
+            Moneda moneda = servicioMLApi.moneda(unPais.currency_id);
+            System.out.println(" - "+moneda.description +" - "+ moneda.symbol);
         }
 
             System.out.println("Elegir id de Pais para obtener sus provincias: ");
